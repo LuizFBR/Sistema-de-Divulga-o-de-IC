@@ -1,4 +1,4 @@
-# ReadMe - Front End
+# Front End
 
 Front End do projeto Sistema de divulgação de ICs.
 
@@ -7,6 +7,9 @@ Front End do projeto Sistema de divulgação de ICs.
 No terminal execute os seguintes comandos:
 
 * yarn install
+* yarn start
+
+Se você já deu yarn install para rodar basta apenas usar:
 * yarn start
 
 Após isso, o projeto estará rodando na url http://localhost:3000.
