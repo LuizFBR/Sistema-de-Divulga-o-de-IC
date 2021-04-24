@@ -1,11 +1,21 @@
 import React, { useState } from 'react';
+import clsx from 'clsx';
 import AppBar from '@material-ui/core/AppBar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import { Container, CustomToolbar } from '../styles';
-import { InputBase, makeStyles, fade } from '@material-ui/core';
+import { InputBase, makeStyles, fade, SwipeableDrawer } from '@material-ui/core';
 
+
+
+import List from '@material-ui/core/List';
+import Divider from '@material-ui/core/Divider';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import InboxIcon from '@material-ui/icons/MoveToInbox';
+import MailIcon from '@material-ui/icons/Mail';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -61,16 +71,24 @@ const useStyles = makeStyles((theme) => ({
       },
     },
   },
+  list: {
+    width: 250,
+  },
+  fullList: {
+    width: 'auto',
+  },
 }));
+
 
 export default function Header() {
 
   const classes = useStyles();
   const [timeOut, setTimeOut] = useState(0);
+  const [showDrawer, setShowDrawer] = useState(false);
 
   const handleInput = (event) => {
     const inputValue = event.target.value;
-    
+
     if (timeOut) clearTimeout(timeOut);
     setTimeOut(setTimeout(() => {
       console.log(inputValue)
@@ -79,12 +97,43 @@ export default function Header() {
     }, 500));
   }
 
+  const openDrawer = () => setShowDrawer(true);
+  const closeDrawer = () => setShowDrawer(false);
+
+
+  const renderDrawerContent = () => <div
+    className={clsx(classes.list, {
+      [classes.fullList]: 'left',
+    })}
+    role="presentation"
+    onClick={closeDrawer}
+    onKeyDown={closeDrawer}
+  >
+    <List>
+      {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+        <ListItem button key={text}>
+          <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+          <ListItemText primary={text} />
+        </ListItem>
+      ))}
+    </List>
+    <Divider />
+    <List>
+      {['All mail', 'Trash', 'Spam'].map((text, index) => (
+        <ListItem button key={text}>
+          <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+          <ListItemText primary={text} />
+        </ListItem>
+      ))}
+    </List>
+  </div>;
+
   return (
 
-    <Container >
+    <Container>
       <AppBar position="static" style={{ backgroundColor: '#000', color: '#fff' }} >
         <CustomToolbar >
-          <IconButton edge="start" color="inherit" aria-label="menu">
+          <IconButton edge="start" color="inherit" aria-label="menu" onClick={() => openDrawer()}>
             <MenuIcon />
           </IconButton>
           <Typography variant="h6">
@@ -101,6 +150,14 @@ export default function Header() {
           />
         </CustomToolbar>
       </AppBar>
+      <SwipeableDrawer
+        anchor='left'
+        open={showDrawer}
+        onClose={closeDrawer}
+        onOpen={openDrawer}
+      >
+        {renderDrawerContent()}
+      </SwipeableDrawer>
     </Container>
 
   );
