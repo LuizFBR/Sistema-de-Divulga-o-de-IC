@@ -1,26 +1,24 @@
 import { useState } from "react";
 import { ExampleContainer, ExampleCounterButton } from "./styles";
+import Header from '../../components/Header';
+import CardIc from '../../components/CardIc';
+import mockData from '../../mock.data.json';
 
 const ExamplePage = () => {
   const [counter, setCounter] = useState(0);
   const [isAdmin, setIsAdmin] = useState(true);
+
   const counterClickHandler = () => {
     setCounter(counter + 1);
   };
+
+  console.log(mockData[0].index);
+
   return (
     //   Example Container é uma div definida no arquivo styles, criamos um componente para o javascript mas no dom vira uma div
     <ExampleContainer>
-      <span> Você clicou {counter} vezes </span>
-      {/* Mesma coisa que o example container só que com um button, aqui temos um exemplo de como passar uma prop, basta abrir o styles para entender onde usamos essa props */}
-      <ExampleCounterButton
-        bdColor="#d4d432"
-        textColor="#000"
-        onClick={counterClickHandler}
-        isAdmin={isAdmin}
-        disabled={!isAdmin}
-      >
-        Clique aqui
-      </ExampleCounterButton>
+      <Header />
+      {mockData.map(ic => (<CardIc data={ic} key={ic._id} />))}
     </ExampleContainer>
   );
 };

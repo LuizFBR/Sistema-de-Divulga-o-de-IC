@@ -1,13 +1,7 @@
 import styled from "styled-components";
 
 export const ExampleContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  background-color: #f9f9f9;
-  min-height: 800px;
-  padding: 40px;
+  
 `;
 // Os Styles são constantes exportadas que chamam a lib do styled components, gerando um elemento no dom de acordo com que é passado após styled.
 export const ExampleCounterButton = styled.button`
