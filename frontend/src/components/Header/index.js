@@ -4,7 +4,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-import { Container, CustomToolbar } from '../styles';
+import { Container, CustomToolbar } from './styles';
 import { InputBase, makeStyles, fade, SwipeableDrawer } from '@material-ui/core';
 
 
