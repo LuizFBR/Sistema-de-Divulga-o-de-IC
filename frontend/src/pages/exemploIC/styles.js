@@ -15,12 +15,12 @@ export const ExampleCounterButton = styled.button`
 export const LoginContainer= styled.div`
 `;
 
-export const CardHolder = styled.form`
+
+export const ConteinerProfIC = styled.div`
   display: flex;
-  flex: 15em;
-  background-color: "#fff";
-  flex-wrap: wrap;
-  align: self;
 `;
 
-
+export const ConteinerInfo = styled.div`
+  color: 'red';
+  align: center;
+`;
