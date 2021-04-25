@@ -4,8 +4,10 @@ import styled from 'styled-components';
 export const Card = styled(Paper).attrs({
   elevation: 4,
 })`
-  width: 180px;
-  height: 360px;
-  margin: 20;
-  padding: 20;
+  width: 28em;
+  height: 20em;
+  min-width: 10em;
+  margin: 1em;
+  border-radius: 0.7em;
+
 `;

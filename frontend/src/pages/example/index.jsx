@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { ExampleContainer, ExampleCounterButton } from "./styles";
+import { ExampleContainer, ExampleCounterButton , CardHolder} from "./styles";
 import Header from '../../components/Header';
 import CardIc from '../../components/CardIc';
 import mockData from '../../mock.data.json';
+
 
 const ExamplePage = () => {
   const [counter, setCounter] = useState(0);
@@ -18,7 +19,11 @@ const ExamplePage = () => {
     //   Example Container é uma div definida no arquivo styles, criamos um componente para o javascript mas no dom vira uma div
     <ExampleContainer>
       <Header />
-      {mockData.map(ic => (<CardIc data={ic} key={ic._id} />))}
+          <div>
+            <CardHolder>
+              {mockData.map(ic => (<CardIc data={ic} key={ic._id} />))}
+            </CardHolder>
+          </div>
     </ExampleContainer>
   );
 };

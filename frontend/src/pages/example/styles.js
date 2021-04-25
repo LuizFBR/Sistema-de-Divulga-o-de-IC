@@ -14,3 +14,13 @@ export const ExampleCounterButton = styled.button`
 
 export const LoginContainer= styled.div`
 `;
+
+export const CardHolder = styled.form`
+  display: flex;
+  flex: 15em;
+  background-color: "#fff";
+  flex-wrap: wrap;
+  align: self;
+`;
+
+
