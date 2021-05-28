@@ -14,7 +14,7 @@ Um sistema para facilitar o acesso de alunos a ICs, que serão categorizadas em 
 
 
 ### Front-End
-O Front-end se baseia em um web app construído com a biblioteca do Reactjs e se utiliza do framework Create React App para a estruturação inicial do projeto. A decisão da utilização deste framework foi baseada nos benefícios de não precisar implementar as configurações do zero, permitindo apenas a preocupação com as features do projeto. O padrão de projeto adotado é o HOC (High Order Components), ou simplesmente Decorator pattern.
+O Front-end se baseia em um web app construído com a biblioteca do Reactjs e se utiliza do framework [Create React App](https://github.com/facebook/create-react-app) para a estruturação inicial do projeto. A decisão da utilização deste framework foi baseada nos benefícios de não precisar implementar as configurações do zero, permitindo apenas a preocupação com as features do projeto. O padrão de projeto adotado é o HOC (High Order Components), ou simplesmente Decorator pattern.
 
 1. Header - possui a função de apresentar o nome do site ao usuário e oferecer a barra de busca.
 1. SideBar - componente destinado para o usuário filtrar os resultados encontrados na página.
@@ -43,5 +43,4 @@ de modo a exibir esses atributos ao usuário.
 O formulário deverá ser preenchido pelos professores e orientadores que desejam divulgar uma
 vaga de iniciação científica. O formulário já contém todos os campos necessários, como nome do
 professor, formas de contato com ele, nome da ic, presença e valor da bolsa, data de expiração
-da vaga e os pré requisitos necessários. Os dados obtidos pelo preenchimento do formulário serão
-utilizados para preencher o banco de dados.
+da vaga e os pré requisitos necessários. Os dados obtidos pelo preenchimento do formulário serão utilizados para preencher o banco de dados, que no caso deste projeto será uma planilha do google sheets.
