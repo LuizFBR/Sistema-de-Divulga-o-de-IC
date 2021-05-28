@@ -5,16 +5,25 @@ Um sistema para facilitar o acesso de alunos a ICs, que serão categorizadas em 
 * Julio Kiyoshi R. Matsoui RA 200483
 * Lucca Ferreira Paiva RA 240229
 * Luiz Fernando Bueno Rosa RA 221197
-* 
+* Lucas Silva Lopes do Carmo RA 202110
 
+## UML
 
+![](/images/UML-Divulga-IC.png)
 ## Arquitetura
 
 
-
-
 ### Front-End
+O Front-end se baseia em um web app construído com a biblioteca do Reactjs e se utiliza do framework Create React App para a estruturação inicial do projeto. A decisão da utilização deste framework foi baseada nos benefícios de não precisar implementar as configurações do zero, permitindo apenas a preocupação com as features do projeto. O padrão de projeto adotado é o HOC (High Order Components), ou simplesmente Decorator pattern.
 
+1. Header - possui a função de apresentar o nome do site ao usuário e oferecer a barra de busca.
+1. SideBar - componente destinado para o usuário filtrar os resultados encontrados na página.
+1. IcCard- componente com a finalidade de apresentar dados gerais de uma IC
+1. IcModalInfo - componente utilizado para mostrar todas as informações de uma IC
+1. CardGrid - componente utilizado para organizar uma quantidade de Cards
+1. Páginas - São as páginas que o site irá conter:
+1. home - página inicial com finalidade de descrever e introduzir o usuário ao propósito do site.
+1. searchResult - página base para a exibição das ICs a partir do CardGrid
 
 
 
