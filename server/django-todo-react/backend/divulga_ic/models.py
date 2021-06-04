@@ -19,7 +19,7 @@ class Advisor(models.Model):
 class IC(models.Model):    
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=50)
-    advisor = Advisor()
+    advisor = ForeignKey(Advisor, on_delete=models.CASCADE)
     endDate = models.DateTimeField()
     has_Scholarship = models.BooleanField()
     scholarship_amount = models.DecimalField(decimal_places=2,max_digits=4)
