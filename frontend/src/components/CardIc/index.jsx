@@ -1,18 +1,88 @@
-import { Paper } from '@material-ui/core';
-import React from 'react';
+import React from "react";
 
-import { Card } from './styles';
+import {
+  Card,
+  DataList,
+  Item,
+  ItemText,
+  ItemTextValue,
+  Column,
+} from "./styles";
 
-function CardIc({ data }) {
+function CardIc({ data, handleClick, showAllContent, style }) {
+  const styles = {
+    backgroundColor: "#b3b",
+    borderRadius: "0.7em",
+    fontSize: "1rem",
+    color: "#363636",
+    padding: "1em",
+    textAlign: "center",
+  };
 
-    const styles = { backgroundColor: '#b3b', borderRadius: '0.7em',
-     fontSize: '1.2em', color: '#363636', padding: '1em', textAlign: 'center'}
-    const handleCardClick = () => console.log(data);
+  return (
+    <Card onClick={handleClick} style={{ ...styles, ...style }}>
+      <DataList>
+        <Item>
+          <ItemText>Nome:</ItemText>
+          <ItemTextValue>{data.name}</ItemTextValue>
+        </Item>
 
-    return (<Card onClick={handleCardClick} style={styles}>
-        <h1>{data.title}</h1>
-    </Card>);
+        <Item>
+          <ItemText>Descrição:</ItemText>
+          <ItemTextValue>{data.description}</ItemTextValue>
+        </Item>
+
+        <Item>
+          <ItemText>Matéria:</ItemText>
+          <ItemTextValue>{data.subject}</ItemTextValue>
+        </Item>
+
+        <Item>
+          <ItemText>Orientador:</ItemText>
+          <ItemTextValue>{data?.advisor?.name}</ItemTextValue>
+        </Item>
+
+        <Item>
+          <ItemText>Contato:</ItemText>
+          <ItemTextValue>{data?.advisor?.email}</ItemTextValue>
+        </Item>
+        {showAllContent && (
+          <>
+            <Item>
+              <ItemText>Site:</ItemText>
+              <ItemTextValue>{data?.advisor?.site}</ItemTextValue>
+            </Item>
+            <Item>
+              <ItemText>Departamento:</ItemText>
+              <ItemTextValue>{data?.advisor?.department}</ItemTextValue>
+            </Item>
+            <Item>
+              <ItemText>Data Limite:</ItemText>
+              <ItemTextValue>{data?.endDate}</ItemTextValue>
+            </Item>
+            {data.hasScholarship && (
+              <Item>
+                <ItemText>Bolsa</ItemText>{" "}
+                <ItemTextValue>{data.scholarship_amount}</ItemTextValue>
+              </Item>
+            )}
+            <Item>
+              <ItemText>Carga horária:</ItemText>
+              <ItemTextValue>{data.workload}</ItemTextValue>
+            </Item>
+            <Item>
+              <ItemText>Requisitos:</ItemText>
+              <Column>
+                {data?.requirements?.map((req) => (
+                  <ItemTextValue>{req}</ItemTextValue>
+                ))}
+              </Column>
+            </Item>
+          </>
+        )}
+      </DataList>
+    </Card>
+  );
 }
-
 
 export default CardIc;
