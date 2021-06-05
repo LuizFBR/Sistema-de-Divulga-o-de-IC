@@ -47,9 +47,7 @@ def advisors_list(request):
 
 @api_view(['GET', 'PUT', 'DELETE'])
 def advisors_detail(request, pk):
- """
- Retrieve, update or delete a advisor by id/pk.
- """
+# Retrieve, update or delete a advisor by id/pk.
     try:
         advisor = Advisor.objects.get(pk=pk)
     except Advisor.DoesNotExist:
@@ -73,9 +71,7 @@ def advisors_detail(request, pk):
     
 @api_view(['GET', 'POST'])
 def ics_list(request):
-    """
- List  customers, or create a new customer.
- """
+# List  customers, or create a new customer.
     if request.method == 'GET':
         data = []
         nextPage = 1
@@ -107,9 +103,7 @@ def ics_list(request):
 
 @api_view(['GET', 'PUT', 'DELETE'])
 def ics_detail(request, pk):
- """
- Retrieve, update or delete a advisor by id/pk.
- """
+# Retrieve, update or delete a advisor by id/pk.
     try:
         ic = IC.objects.get(pk=pk)
     except IC.DoesNotExist:
