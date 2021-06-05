@@ -15,7 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from divulga_ic import views
+from django.conf.urls import url
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    url(r'^api/advisors/$', views.advisors_list),
+    url(r'^api/advisors/(?P<pk>[0-9]+)$', views.advisors_detail),
+    url(r'^api/ics/$', views.ics_list),
+    url(r'^api/ics/(?P<pk>[0-9]+)$', views.ics_detail),
 ]

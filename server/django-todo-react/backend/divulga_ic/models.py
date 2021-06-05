@@ -19,12 +19,12 @@ class Advisor(models.Model):
 class IC(models.Model):    
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=50)
-    advisor = ForeignKey(Advisor, on_delete=models.CASCADE)
+    advisor = models.ForeignKey(Advisor, on_delete=models.CASCADE)
     endDate = models.DateTimeField()
-    has_Scholarship = models.BooleanField()
+    has_scholarship = models.BooleanField()
     scholarship_amount = models.DecimalField(decimal_places=2,max_digits=4)
     subject = models.CharField(max_length=50)
-    requirements = ListCharFields(models.CharField(max_lenght=50),20)
+    requirements = models.CharField(max_length=1000)
     workload = models.DecimalField(decimal_places=2,max_digits=4)
 
     def _str_(self):
