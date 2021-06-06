@@ -1,17 +1,14 @@
 import React from "react";
 
-import { formatMoney } from "../../utils/IC";
-
 import {
   Card,
   DataList,
   Item,
   ItemText,
   ItemTextValue,
-  Column,
-} from "./styles";
+} from "../CardBaseStyles/styles";
 
-function CardIc({ data, handleClick, showAllContent, style }) {
+function CardIc({ data, handleClick }) {
   const styles = {
     backgroundColor: "#b3b",
     borderRadius: "0.7em",
@@ -22,7 +19,7 @@ function CardIc({ data, handleClick, showAllContent, style }) {
   };
 
   return (
-    <Card onClick={handleClick} style={{ ...styles, ...style }}>
+    <Card onClick={handleClick} style={styles}>
       <DataList>
         <Item>
           <ItemText>Nome:</ItemText>
@@ -48,42 +45,6 @@ function CardIc({ data, handleClick, showAllContent, style }) {
           <ItemText>Contato:</ItemText>
           <ItemTextValue>{data?.advisor?.email}</ItemTextValue>
         </Item>
-        {showAllContent && (
-          <>
-            <Item>
-              <ItemText>Site:</ItemText>
-              <ItemTextValue>{data?.advisor?.site}</ItemTextValue>
-            </Item>
-            <Item>
-              <ItemText>Departamento:</ItemText>
-              <ItemTextValue>{data?.advisor?.department}</ItemTextValue>
-            </Item>
-            <Item>
-              <ItemText>Data Limite:</ItemText>
-              <ItemTextValue>{data?.endDate}</ItemTextValue>
-            </Item>
-            {data.hasScholarship && (
-              <Item>
-                <ItemText>Bolsa</ItemText>{" "}
-                <ItemTextValue>
-                  {formatMoney(data.scholarship_amount)}
-                </ItemTextValue>
-              </Item>
-            )}
-            <Item>
-              <ItemText>Carga horária:</ItemText>
-              <ItemTextValue>{data.workload}</ItemTextValue>
-            </Item>
-            <Item>
-              <ItemText>Requisitos:</ItemText>
-              <Column>
-                {data?.requirements?.map((req) => (
-                  <ItemTextValue>{req}</ItemTextValue>
-                ))}
-              </Column>
-            </Item>
-          </>
-        )}
       </DataList>
     </Card>
   );

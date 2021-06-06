@@ -3,6 +3,7 @@ import Backdrop from "@material-ui/core/Backdrop";
 
 import Header from "../../components/Header";
 import CardIc from "../../components/CardIc";
+import DetailedCard from "../../components/DetailedCard";
 import mockData from "../../mock.data.json";
 
 import { ExampleContainer, CardHolder } from "./styles";
@@ -37,12 +38,7 @@ const ExamplePage = () => {
           ))}
         </CardHolder>
         <Backdrop style={{ zIndex: 100 }} open={openModal} onClick={closeModal}>
-          <CardIc
-            style={{ backgroundColor: "#fff" }}
-            data={icData}
-            showAllContent={true}
-            handleClick={() => {}}
-          />
+          <DetailedCard data={icData} />
         </Backdrop>
       </div>
     </ExampleContainer>
