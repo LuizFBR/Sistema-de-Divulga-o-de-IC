@@ -1,5 +1,7 @@
 import React from "react";
 
+import { formatMoney } from "../../utils/IC";
+
 import {
   Card,
   DataList,
@@ -63,7 +65,9 @@ function CardIc({ data, handleClick, showAllContent, style }) {
             {data.hasScholarship && (
               <Item>
                 <ItemText>Bolsa</ItemText>{" "}
-                <ItemTextValue>{data.scholarship_amount}</ItemTextValue>
+                <ItemTextValue>
+                  {formatMoney(data.scholarship_amount)}
+                </ItemTextValue>
               </Item>
             )}
             <Item>
