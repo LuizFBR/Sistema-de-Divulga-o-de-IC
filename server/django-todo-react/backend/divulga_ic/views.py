@@ -2,13 +2,21 @@ from django.shortcuts import render
 
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from rest_framework import status
+from rest_framework import status,viewsets
 
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .models import Advisor, IC
 from .serializers import *
 
 # Create your views here.
+
+class AdvisorView(viewsets.ModelViewSet):
+    serializer_class = AdvisorSerializer
+    queryset = Advisor.objects.all()
+
+class ICView(viewsets.ModelViewSet):
+    serializer_class = ICSerializer
+    queryset = IC.objects.all()
 
 @api_view(['GET', 'POST'])
 def advisors_list(request):
