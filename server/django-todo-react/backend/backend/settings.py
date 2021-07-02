@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-j*y1c+!ivyd@@5s7ngyfpfb7^5@(_q4qnh_s^%n2em+rnm_#n6
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'corsheaders',
     'rest_framework',
+    'gsheets',
     'divulga_ic',
 ]
 
@@ -52,6 +53,12 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
 ]
+
+#About GSheets Integration
+
+GSHEETS = {
+    'CLIENT_SECRETS': '/home/joaovianini/PES3/sistema-de-divulga-o-de-ics/server/django-todo-react/backend/backend/Creds/Keys.json'
+}
 
 ROOT_URLCONF = 'backend.urls'
 

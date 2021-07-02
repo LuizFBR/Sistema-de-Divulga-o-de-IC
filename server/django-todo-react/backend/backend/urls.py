@@ -31,4 +31,5 @@ urlpatterns = [
     url(r'^api/advisors/(?P<pk>[0-9]+)$', views.advisors_detail),
     url(r'^api/ics/$', views.ics_list),
     url(r'^api/ics/(?P<pk>[0-9]+)$', views.ics_detail),
+    path('', include('gsheets.urls')),
 ]

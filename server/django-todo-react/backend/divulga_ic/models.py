@@ -1,11 +1,16 @@
 from django.db import models
-import uuid
+from gsheets import mixins
+from uuid import uuid4
 
 # Create your models here.
 
 
-class Advisor(models.Model):    
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+class Advisor(mixins.SheetSyncableMixin, models.Model):
+    spreadsheet_id = '1T1kdFoWAdhOO_F9gXp9xkrrT70e1-Vgub17Ri4vUCxA'
+    sheet_name = 'Advisor'
+    model_id_field = 'id'
+    
+    id = models.CharField(primary_key=True, max_length=255, default=uuid4)
     email = models.CharField(max_length=50)
     name = models.CharField(max_length=50)
     department = models.CharField(max_length=50)
@@ -16,16 +21,21 @@ class Advisor(models.Model):
         return self.title
 
 
-class IC(models.Model):    
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+class IC(mixins.SheetSyncableMixin, models.Model):    
+    spreadsheet_id = '1T1kdFoWAdhOO_F9gXp9xkrrT70e1-Vgub17Ri4vUCxA'
+    sheet_name = 'IC'
+    model_id_field = 'id'
+
+
+    id = models.CharField(primary_key=True, max_length=255, default=uuid4)
     name = models.CharField(max_length=50)
-    advisor = models.ForeignKey(Advisor, on_delete=models.CASCADE)
-    endDate = models.DateTimeField()
+    advisor = models.CharField(max_length=255)
+    endDate = models.CharField(max_length=16)
     has_scholarship = models.BooleanField(default=False)
-    scholarship_amount = models.DecimalField(decimal_places=2,max_digits=4)
-    subject = models.CharField(max_length=50)
+    scholarship_amount = models.CharField(max_length=5)
+    subject = models.CharField(max_length=100)
     requirements = models.CharField(max_length=1000)
-    workload = models.DecimalField(decimal_places=2,max_digits=4)
+    workload = models.CharField(max_length=5)
 
     def _str_(self):
         return self.title
