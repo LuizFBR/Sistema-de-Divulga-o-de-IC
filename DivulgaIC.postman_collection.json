@@ -1,0 +1,126 @@
+{
+	"info": {
+		"_postman_id": "138845db-bd41-4f0a-beba-c5b66cbcaf93",
+		"name": "DivulgaIC",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get-ics-by-id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/ics/fc695d74-cdc1-4ca9-83a1-46af9dbb7252",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"ics",
+						"fc695d74-cdc1-4ca9-83a1-46af9dbb7252"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post-new-ic",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/ics/?\"name\"=\"julio\"&\"id\"=\"8761edce-51bf-47ab-80fe-232511fe7b89\"&\"advisor\"=\"7c8ffe7e-0032-4f5b-b997-0cfff1c5e13b\"&\"endDate\"=\"2021-07-01T21:44:00Z\"&\"subject\"=\"redes\"&\"requirements\"=\"404\"&\"workload\"=\"12.00\"&\"has_scholarship\"=true&\"scholarship_amount\"=\"20.00\"",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"ics",
+						""
+					],
+					"query": [
+						{
+							"key": "\"name\"",
+							"value": "\"julio\""
+						},
+						{
+							"key": "\"id\"",
+							"value": "\"8761edce-51bf-47ab-80fe-232511fe7b89\""
+						},
+						{
+							"key": "\"advisor\"",
+							"value": "\"7c8ffe7e-0032-4f5b-b997-0cfff1c5e13b\""
+						},
+						{
+							"key": "\"endDate\"",
+							"value": "\"2021-07-01T21:44:00Z\""
+						},
+						{
+							"key": "\"subject\"",
+							"value": "\"redes\""
+						},
+						{
+							"key": "\"requirements\"",
+							"value": "\"404\""
+						},
+						{
+							"key": "\"workload\"",
+							"value": "\"12.00\""
+						},
+						{
+							"key": "\"has_scholarship\"",
+							"value": "true"
+						},
+						{
+							"key": "\"scholarship_amount\"",
+							"value": "\"20.00\""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-advisors-list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/advisors/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"advisors",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-all-ic",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": null
+			},
+			"response": []
+		}
+	]
+}
