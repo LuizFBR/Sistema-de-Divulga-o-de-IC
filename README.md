@@ -44,6 +44,22 @@ O formulário deverá ser preenchido pelos professores e orientadores que deseja
 vaga de iniciação científica. O formulário já contém todos os campos necessários, como nome do
 professor, formas de contato com ele, nome da ic, presença e valor da bolsa, data de expiração
 da vaga e os pré requisitos necessários. Os dados obtidos pelo preenchimento do formulário serão utilizados para preencher o banco de dados, que no caso deste projeto será uma planilha do google sheets.
+### Como rodar o Back-end:
+1. primeiro é necessário instalar as dependencias:
+```
+sudo apt-get update
+sudo apt-get install python3.8
+sudo apt-get install python3-pip
+pip install Django
+pip install djangorestframework
+pip install django-cors-headers
+```
+2. Agora vá no seguinte path: server/django-todo-react/backend, agora digite os seguintes comandos:
+```
+python3 manage.py migrate
+python3 manage.py runserver
+```
+
 
 ### Como rodar o Front-end:
 1. Primeiro é necessário instalar o node:
