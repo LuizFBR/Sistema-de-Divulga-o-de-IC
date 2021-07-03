@@ -44,3 +44,20 @@ O formulário deverá ser preenchido pelos professores e orientadores que deseja
 vaga de iniciação científica. O formulário já contém todos os campos necessários, como nome do
 professor, formas de contato com ele, nome da ic, presença e valor da bolsa, data de expiração
 da vaga e os pré requisitos necessários. Os dados obtidos pelo preenchimento do formulário serão utilizados para preencher o banco de dados, que no caso deste projeto será uma planilha do google sheets.
+
+### Como rodar o Front-end:
+1. Primeiro é necessário instalar o node:
+https://nodejs.org/en/download/
+
+2. Depois é necessário instalar o yarn:
+```
+npm install --global yarn
+```
+3. Agora é necessário instalar as dependencias, para isto entre na pasta do frontend e rode o seguinte comando:
+````
+yarn install
+````
+4. Por fim basta rodar o programa( ainda na pasta do frontend): 
+````
+yarn start
+````
