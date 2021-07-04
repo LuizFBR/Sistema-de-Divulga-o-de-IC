@@ -77,3 +77,13 @@ yarn install
 ````
 yarn start
 ````
+
+### Automatização da instlação dos requisitos:
+Criou-se um shell script denominado: requirements.sh, para rodar este arquivo primeiro:
+```
+chmod +x requirements.sh
+```
+agora para execultar este arquivo:
+```
+./requirements.sh
+```
