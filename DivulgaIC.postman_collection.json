@@ -1,0 +1,190 @@
+{
+	"info": {
+		"_postman_id": "671f7be8-bdd7-4c46-8f77-5b9e5b7896f0",
+		"name": "DivulgaIC",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get-ics-by-id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status da saida é 200\", () => {",
+							"  pm.response.to.have.status(200);",
+							"});",
+							"",
+							"const jsonData = pm.response.json();",
+							"pm.test(\"Teste tipo de dado da resposta\", () => {",
+							"  pm.expect(jsonData).to.be.an(\"object\");",
+							"  pm.expect(jsonData.name).to.be.a(\"string\");",
+							"  pm.expect(jsonData.has_scholarship).to.be.a(\"boolean\");",
+							"  pm.expect(jsonData.subject).to.be.an(\"string\");",
+							"  pm.expect(jsonData.scholarship_amount).to.be.an(\"string\");",
+							"});",
+							"",
+							"pm.test(\"Teste valor da resposta\", () => {",
+							"    pm.expect(jsonData.id).to.eql(\"487e8c0dc2144f42a05261159a1b3854\");",
+							"    pm.expect(jsonData.name).to.eql(\"Luiz\");",
+							"    pm.expect(jsonData.advisor).to.eql(\"7c8ffe7e00324f5bb9970cfff1c5e13b\");",
+							"    pm.expect(jsonData.endDate).to.eql(\"2021-06-14 00:00:00\");",
+							"    pm.expect(jsonData.has_scholarship).to.eql(false);",
+							"    pm.expect(jsonData.scholarship_amount).to.eql(\"50\");",
+							"    pm.expect(jsonData.subject).to.eql(\"Grafos\");",
+							"    pm.expect(jsonData.requirements).to.eql(\"MC558\");",
+							"    pm.expect(jsonData.workload).to.eql(\"12\");",
+							"    ",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/ics/487e8c0dc2144f42a05261159a1b3854",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"ics",
+						"487e8c0dc2144f42a05261159a1b3854"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post-new-ic",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"  pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/ics/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"ics",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-advisors-list",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status da saida é 200\", function () {",
+							"  pm.response.to.have.status(200);",
+							"});",
+							"",
+							"const jsonData = pm.response.json();",
+							"pm.test(\"Retorna conjunto de JSON\", function () {",
+							"  jsonData.forEach(obj => {",
+							"      pm.expect(obj).to.be.an(\"object\");",
+							"  })",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/advisors/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"advisors",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-all-ic",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status da saida é 200\", function () {",
+							"  pm.response.to.have.status(200);",
+							"});",
+							"",
+							"const jsonData = pm.response.json();",
+							"pm.test(\"Retorna conjunto de JSON\", function () {",
+							"  jsonData.forEach(obj => {",
+							"      pm.expect(obj).to.be.an(\"object\");",
+							"  })",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/ics/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"ics",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
