@@ -1,14 +1,32 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Backdrop from "@material-ui/core/Backdrop";
 
 import Header from "../../components/Header";
 import CardIc from "../../components/CardIc";
 import DetailedCard from "../../components/DetailedCard";
 import mockData from "../../mock.data.json";
+import axios from "axios"
+import { getIcs } from "../../service/api.js"
 
 import { ExampleContainer, CardHolder } from "./styles";
 
 const ExamplePage = () => {
+
+  useEffect(() => {
+    fetchData()
+  }, [])
+
+  const fetchData = async () => {
+    try {
+      const data = await getIcs()
+      if(data) {
+        setIcData(data)
+      }
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
   const emptyData = {};
   const [openModal, setOpenModal] = useState(false);
   const [icData, setIcData] = useState(emptyData);
