@@ -21,63 +21,56 @@ function CardIc({ data, handleClick }) {
   return (
     <Card onClick={handleClick} style={styles}>
       <DataList>
-        {data.name &&   
+        {data[0].name &&   
           (<Item>
             <ItemText>Nome:</ItemText>
-            <ItemTextValue>{data.name}</ItemTextValue>
+            <ItemTextValue>{data[0].name}</ItemTextValue>
           </Item>)
         }
 
-        {data.description &&   
+        {false && data[0].description &&   
           (<Item>
             <ItemText>Descricao:</ItemText>
-            <ItemTextValue>{data.description}</ItemTextValue>
+            <ItemTextValue>{data[0].description}</ItemTextValue>
           </Item>)
         }
 
-        {data.subject &&   
+        {data[0].subject &&   
           (<Item>
             <ItemText>Materia:</ItemText>
-            <ItemTextValue>{data.subject}</ItemTextValue>
+            <ItemTextValue>{data[0].subject}</ItemTextValue>
           </Item>)
         }
 
-        {data.advisor &&   
+        {data[1] &&   
           (<Item>
             <ItemText>Orientador:</ItemText>
-            <ItemTextValue>{data.advisor}</ItemTextValue>
+            <ItemTextValue>{data[1]?.name}</ItemTextValue>
           </Item>)
         }
 
-        {data.endDate &&   
+        {data[0].endDate &&   
           (<Item>
             <ItemText>Data de Termino:</ItemText>
-            <ItemTextValue>{data.endDate}</ItemTextValue>
+            <ItemTextValue>{data[0].endDate}</ItemTextValue>
           </Item>)
         }
-
-        {data.advisor &&   
-          (<Item>
-            <ItemText>Orientador:</ItemText>
-            <ItemTextValue>{data.advisor}</ItemTextValue>
-          </Item>)
-        }
-        {data.requirements &&   
+        {data[0].requirements &&   
           (<Item>
             <ItemText>Requerimentos:</ItemText>
-            <ItemTextValue>{data.requirements}</ItemTextValue>
+            <ItemTextValue>{data[0].requirements}</ItemTextValue>
           </Item>)
         }
         {
           (<Item>
             <ItemText>Bolsa</ItemText>
-            <ItemTextValue>{data.has_scholarship?data.scholarship_amount:"Ausente"}</ItemTextValue>
+            <ItemTextValue>{data[0].has_scholarship?data[0].scholarship_amount:"Ausente"}</ItemTextValue>
           </Item>)
         }
-        {data.workload &&   
+        {data[0].workload &&   
           (<Item>
             <ItemText>Carga horaria semanal:</ItemText>
-            <ItemTextValue>{data.workload + " hrs"}</ItemTextValue>
+            <ItemTextValue>{data[0].workload + " hrs"}</ItemTextValue>
           </Item>)
         }
       </DataList>

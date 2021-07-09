@@ -1,4 +1,3 @@
-
 import axios from "axios"
 
 export const api = axios.create({
@@ -6,3 +5,5 @@ export const api = axios.create({
 })
 
 export const getIcs = async url => await api.get(url)
+
+export const getAdvisors = async url => await api.get(url)

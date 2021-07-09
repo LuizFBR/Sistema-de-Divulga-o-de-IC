@@ -14,6 +14,7 @@ const ExamplePage = () => {
   const [openModal, setOpenModal] = useState(false);
   const [selectedIc, setSelectedIc] = useState(emptyData);
   const [icsData, setIcsData] = useState([]);
+  const [advisors, setAdvisors] = useState([]);
 
   const handleOpenModal = (ic) => {
     setSelectedIc(ic);  
@@ -24,11 +25,11 @@ const ExamplePage = () => {
     setOpenModal(false);
   };
 
-  const fetchData = async () => {
+  const fetchDataIcs = async () => {
     try {
-      const data = await getIcs("ics/")
-      if(data) {
-        setIcsData(data.data)
+      const ics = await getIcs("ics/")
+      if(ics) {
+        setIcsData(ics.data)
         console.log(icsData)
       }
        else {console.log("No data")}
@@ -37,9 +38,24 @@ const ExamplePage = () => {
     }
   }
 
+  const fetchDataAdvisors = async () => {
+    try {
+      const advs = await getIcs("advisors/")
+      if(advs) {
+        setAdvisors(advs.data)
+        console.log(advisors)
+      }
+       else {console.log("No data")}
+    } catch (e) {
+      console.log("Erro: ", e)
+    }
+  }
+
   useEffect(() => {
-    fetchData()
-    console.log("IcsData: ", icsData) 
+    fetchDataIcs()
+    fetchDataAdvisors()
+    console.log("IcsData: ", icsData)
+    console.log("Advisors: ", advisors) 
   }, [])
   
 
@@ -54,7 +70,7 @@ const ExamplePage = () => {
           {
           icsData?.map((ic, index) => (
             <CardIc
-              data={ic}
+              data={[ic, advisors.find(adv => adv.id == ic.advisor)]}
               key={`${ic._id}.${index}`}
               showAllContent={false}
               handleClick={() => handleOpenModal(ic)}
@@ -62,7 +78,7 @@ const ExamplePage = () => {
           ))}
         </CardHolder>
         <Backdrop style={{ zIndex: 100 }} open={openModal} onClick={closeModal}>
-          <DetailedCard data={selectedIc} />
+          <DetailedCard data={[selectedIc, advisors.find(adv => adv.id == selectedIc.advisor)]} />
         </Backdrop>
       </div>
     </ExampleContainer>
