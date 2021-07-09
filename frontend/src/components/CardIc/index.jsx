@@ -23,27 +23,35 @@ function CardIc({ data, handleClick }) {
       <DataList>
         <Item>
           <ItemText>Nome:</ItemText>
-          <ItemTextValue>{data.name}</ItemTextValue>
+          <ItemTextValue data-testid="name-value">{data.name}</ItemTextValue>
         </Item>
 
         <Item>
           <ItemText>Descrição:</ItemText>
-          <ItemTextValue>{data.description}</ItemTextValue>
+          <ItemTextValue data-testid="description-value">
+            {data.description}
+          </ItemTextValue>
         </Item>
 
         <Item>
           <ItemText>Matéria:</ItemText>
-          <ItemTextValue>{data.subject}</ItemTextValue>
+          <ItemTextValue data-testid="subject-value">
+            {data.subject}
+          </ItemTextValue>
         </Item>
 
         <Item>
           <ItemText>Orientador:</ItemText>
-          <ItemTextValue>{data?.advisor?.name}</ItemTextValue>
+          <ItemTextValue data-testid="advisor-value">
+            {data?.advisor?.name}
+          </ItemTextValue>
         </Item>
 
         <Item>
           <ItemText>Contato:</ItemText>
-          <ItemTextValue>{data?.advisor?.email}</ItemTextValue>
+          <ItemTextValue data-testid="email-value">
+            {data?.advisor?.email}
+          </ItemTextValue>
         </Item>
       </DataList>
     </Card>
