@@ -30,9 +30,7 @@ const ExamplePage = () => {
       const ics = await getIcs("ics/")
       if(ics) {
         setIcsData(ics.data)
-        console.log(icsData)
       }
-       else {console.log("No data")}
     } catch (e) {
       console.log("Erro: ", e)
     }
@@ -43,9 +41,7 @@ const ExamplePage = () => {
       const advs = await getIcs("advisors/")
       if(advs) {
         setAdvisors(advs.data)
-        console.log(advisors)
       }
-       else {console.log("No data")}
     } catch (e) {
       console.log("Erro: ", e)
     }
@@ -54,8 +50,6 @@ const ExamplePage = () => {
   useEffect(() => {
     fetchDataIcs()
     fetchDataAdvisors()
-    console.log("IcsData: ", icsData)
-    console.log("Advisors: ", advisors) 
   }, [])
   
 
