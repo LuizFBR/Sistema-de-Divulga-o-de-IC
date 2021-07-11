@@ -1,0 +1,56 @@
+# To contribute improvements to CI/CD templates, please follow the Development guide at:
+# https://docs.gitlab.com/ee/development/cicd/templates.html
+# This specific template is located at:
+# https://gitlab.com/gitlab-org/gitlab/-/blob/master/lib/gitlab/ci/templates/Django.gitlab-ci.yml
+
+# Official framework image. Look for the different tagged releases at:
+# https://hub.docker.com/r/library/python
+image: python:latest
+
+# Pick zero or more services to be used on all builds.
+# Only needed when using a docker container to run your tests in.
+# Check out: http://docs.gitlab.com/ee/ci/docker/using_docker_images.html#what-is-a-service
+stages:
+    - build
+    - test
+    - test_unitario
+    - test_front
+build:
+    stage: build
+    script:
+        - python --version
+        - pip install Django
+        - pip install djangorestframework
+        - pip install django-cors-headers
+        - pip install django-gsheets
+        - cd server/django-todo-react/backend
+        - python manage.py migrate
+        - echo "all requirements are instaled and now just run the server"
+        #- python manage.py runserver se execultar vai travar o pipeline
+    artifacts: 
+test:
+    image: node:latest
+    stage: test
+    script:
+        - npm install -g newman
+   
+test_unitario:
+    before_script:
+        - pip install Django
+        - pip install djangorestframework
+        - pip install django-cors-headers
+        - pip install django-gsheets
+        - cd server/django-todo-react/backend
+        - python manage.py migrate
+    script:
+        - python manage.py test
+test_front:
+    image: node:latest
+    before_script:
+        - cd frontend
+        - npm install
+        - yarn add -D enzyme
+        - yarn add -D @testing-library/jest-dom
+    script:
+        - npm test
+
