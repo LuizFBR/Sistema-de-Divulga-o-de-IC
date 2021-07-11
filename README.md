@@ -53,6 +53,7 @@ sudo apt-get install python3-pip
 pip install Django
 pip install djangorestframework
 pip install django-cors-headers
+pip install django-gsheets
 ```
 2. Agora vá no seguinte path: server/django-todo-react/backend, agora digite os seguintes comandos:
 ```
@@ -87,3 +88,4 @@ agora para execultar este arquivo:
 ```
 ./requirements.sh
 ```
+
