@@ -19,6 +19,7 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import InboxIcon from "@material-ui/icons/MoveToInbox";
 import MailIcon from "@material-ui/icons/Mail";
+import { getIcById } from "../../service/api";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -81,7 +82,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Header() {
+export default function Header({ handleSearchResults }) {
   const classes = useStyles();
   const [timeOut, setTimeOut] = useState(0);
   const [showDrawer, setShowDrawer] = useState(false);
@@ -91,10 +92,14 @@ export default function Header() {
 
     if (timeOut) clearTimeout(timeOut);
     setTimeOut(
-      setTimeout(() => {
+      setTimeout(async () => {
         console.log(inputValue);
-
-        // TODO Handle search ICs
+        const { data } = await getIcById("ics", inputValue);
+        if (data && data.length > 0) {
+          handleSearchResults(true, data);
+        } else {
+          handleSearchResults(false, []);
+        }
       }, 500)
     );
   };
