@@ -5,8 +5,8 @@ from uuid import uuid4
 # Create your models here.
 
 
-class Advisor(mixins.SheetSyncableMixin, models.Model):
-    spreadsheet_id = '1T1kdFoWAdhOO_F9gXp9xkrrT70e1-Vgub17Ri4vUCxA'
+class Advisor(mixins.SheetPullableMixin, models.Model):
+    spreadsheet_id = '1Bn3pagRCSO2MdUjtHcx4K0O0n6JOSpMFhB-4t4pvtPA'
     sheet_name = 'Advisor'
     model_id_field = 'id'
     
@@ -21,8 +21,8 @@ class Advisor(mixins.SheetSyncableMixin, models.Model):
         return self.title
 
 
-class IC(mixins.SheetSyncableMixin, models.Model):    
-    spreadsheet_id = '1T1kdFoWAdhOO_F9gXp9xkrrT70e1-Vgub17Ri4vUCxA'
+class IC(mixins.SheetPullableMixin, models.Model):    
+    spreadsheet_id = '1Bn3pagRCSO2MdUjtHcx4K0O0n6JOSpMFhB-4t4pvtPA'
     sheet_name = 'IC'
     model_id_field = 'id'
 
