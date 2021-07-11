@@ -13,12 +13,15 @@ import {
 
 function CardIc({ data }) {
   const styles = {
-    backgroundColor: "#fff",
+    backgroundColor: "#CD9BC7",
     borderRadius: "0.7em",
     fontSize: "1rem",
     color: "#363636",
     padding: "1em",
     textAlign: "center",
+    "a": {
+      color: "hotpink",
+    },
   };
 
   return (

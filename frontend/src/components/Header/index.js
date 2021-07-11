@@ -139,7 +139,7 @@ export default function Header() {
     <Container data-testid="home-page-header">
       <AppBar
         position="static"
-        style={{ backgroundColor: "#000", color: "#fff" }}
+        style={{ backgroundColor: "#240333", color: "#fff" }}
       >
         <CustomToolbar>
           <IconButton

@@ -19,4 +19,8 @@ export const CardHolder = styled.form`
   background-color: "#fff";
   flex-wrap: wrap;
   align: self;
+  '&:hover': {
+    background: '#40a9ff'
+  }
 `;
+

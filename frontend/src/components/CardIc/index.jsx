@@ -10,16 +10,19 @@ import {
 
 function CardIc({ data, handleClick }) {
   const styles = {
-    backgroundColor: "#b3b",
+    backgroundColor: "#CD39C7",
     borderRadius: "0.7em",
     fontSize: "1rem",
-    color: "#363636",
+    color: "#2d0644",
     padding: "1em",
     textAlign: "center",
+    '&:hover': {
+      background: '#000',
+    },
   };
 
   return (
-    <Card onClick={handleClick} style={styles}>
+    <Card onClick={handleClick} style={styles} >
       <DataList>
         {data[0].name &&   
           (<Item>
