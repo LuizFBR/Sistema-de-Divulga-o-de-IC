@@ -1,45 +1,44 @@
 {
 	"info": {
-		"_postman_id": "138845db-bd41-4f0a-beba-c5b66cbcaf93",
+		"_postman_id": "671f7be8-bdd7-4c46-8f77-5b9e5b7896f0",
 		"name": "DivulgaIC",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "get-ics-by-id",
+			"name": "get-all-ic",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status da saida é 200\", function () {",
+							"  pm.response.to.have.status(200);",
+							"});",
+							"",
+							"const jsonData = pm.response.json();",
+							"pm.test(\"Retorna conjunto de JSON\", function () {",
+							"  jsonData.forEach(obj => {",
+							"      pm.expect(obj).to.be.an(\"object\");",
+							"  })",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8000/api/ics/fc695d74-cdc1-4ca9-83a1-46af9dbb7252",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"ics",
-						"fc695d74-cdc1-4ca9-83a1-46af9dbb7252"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "post-new-ic",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "graphql",
-					"graphql": {
-						"query": "",
-						"variables": ""
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text"
 					}
-				},
+				],
 				"url": {
-					"raw": "http://localhost:8000/api/ics/?\"name\"=\"julio\"&\"id\"=\"8761edce-51bf-47ab-80fe-232511fe7b89\"&\"advisor\"=\"7c8ffe7e-0032-4f5b-b997-0cfff1c5e13b\"&\"endDate\"=\"2021-07-01T21:44:00Z\"&\"subject\"=\"redes\"&\"requirements\"=\"404\"&\"workload\"=\"12.00\"&\"has_scholarship\"=true&\"scholarship_amount\"=\"20.00\"",
+					"raw": "http://localhost:8000/api/ics/",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -49,44 +48,6 @@
 						"api",
 						"ics",
 						""
-					],
-					"query": [
-						{
-							"key": "\"name\"",
-							"value": "\"julio\""
-						},
-						{
-							"key": "\"id\"",
-							"value": "\"8761edce-51bf-47ab-80fe-232511fe7b89\""
-						},
-						{
-							"key": "\"advisor\"",
-							"value": "\"7c8ffe7e-0032-4f5b-b997-0cfff1c5e13b\""
-						},
-						{
-							"key": "\"endDate\"",
-							"value": "\"2021-07-01T21:44:00Z\""
-						},
-						{
-							"key": "\"subject\"",
-							"value": "\"redes\""
-						},
-						{
-							"key": "\"requirements\"",
-							"value": "\"404\""
-						},
-						{
-							"key": "\"workload\"",
-							"value": "\"12.00\""
-						},
-						{
-							"key": "\"has_scholarship\"",
-							"value": "true"
-						},
-						{
-							"key": "\"scholarship_amount\"",
-							"value": "\"20.00\""
-						}
 					]
 				}
 			},
@@ -94,6 +55,26 @@
 		},
 		{
 			"name": "get-advisors-list",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status da saida é 200\", function () {",
+							"  pm.response.to.have.status(200);",
+							"});",
+							"",
+							"const jsonData = pm.response.json();",
+							"pm.test(\"Retorna conjunto de JSON\", function () {",
+							"  jsonData.forEach(obj => {",
+							"      pm.expect(obj).to.be.an(\"object\");",
+							"  })",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -114,13 +95,509 @@
 			"response": []
 		},
 		{
-			"name": "get-all-ic",
+			"name": "get-ics-by-id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status da saida é 200\", () => {",
+							"  pm.response.to.have.status(200);",
+							"});",
+							"",
+							"const jsonData = pm.response.json();",
+							"pm.test(\"Teste tipo de dado da resposta\", () => {",
+							"  pm.expect(jsonData).to.be.an(\"object\");",
+							"  pm.expect(jsonData.name).to.be.a(\"string\");",
+							"  pm.expect(jsonData.has_scholarship).to.be.a(\"boolean\");",
+							"  pm.expect(jsonData.subject).to.be.an(\"string\");",
+							"  pm.expect(jsonData.scholarship_amount).to.be.an(\"string\");",
+							"});",
+							"",
+							"pm.test(\"Teste valor da resposta\", () => {",
+							"    pm.expect(jsonData.id).to.eql(\"487e8c0dc2144f42a05261159a1b3854\");",
+							"    pm.expect(jsonData.name).to.eql(\"Luiz\");",
+							"    pm.expect(jsonData.advisor).to.eql(\"7c8ffe7e00324f5bb9970cfff1c5e13b\");",
+							"    pm.expect(jsonData.endDate).to.eql(\"2021-06-14 00:00:00\");",
+							"    pm.expect(jsonData.has_scholarship).to.eql(false);",
+							"    pm.expect(jsonData.scholarship_amount).to.eql(\"50\");",
+							"    pm.expect(jsonData.subject).to.eql(\"Grafos\");",
+							"    pm.expect(jsonData.requirements).to.eql(\"MC558\");",
+							"    pm.expect(jsonData.workload).to.eql(\"12\");",
+							"    ",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": null
+				"url": {
+					"raw": "http://localhost:8000/api/ics/{{id-for-get}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"ics",
+						"{{id-for-get}}"
+					]
+				}
 			},
 			"response": []
+		},
+		{
+			"name": "post-new-ic",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"  pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"babcaaf9-c537-458a-aefd-bf929da61769\",\n    \"name\": \"Cassiopeia\",\n    \"advisor\": \"7c8ffe7e00324f5bb9970cfff1c5e13b\",\n    \"endDate\": \"2021-06-14\",\n    \"has_scholarship\": false,\n    \"scholarship_amount\": \"50.00\",\n    \"subject\": \"Engenharia de Software\",\n    \"requirements\": \"MC558\",\n    \"workload\": \"12.00\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/ics/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"ics",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post-new-ic-idIgual-invalido",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"  pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"babcaaf9-c537-458a-aefd-bf929da61769\",\n    \"name\": \"Cassiopeia\",\n    \"advisor\": \"7c8ffe7e00324f5bb9970cfff1c5e13b\",\n    \"endDate\": \"2021-06-14\",\n    \"has_scholarship\": false,\n    \"scholarship_amount\": \"50.00\",\n    \"subject\": \"Engenharia de Software\",\n    \"requirements\": \"MC558\",\n    \"workload\": \"12.00\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/ics/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"ics",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-validar-post",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status da saida é 200\", () => {",
+							"  pm.response.to.have.status(200);",
+							"});",
+							"",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/ics/babcaaf9-c537-458a-aefd-bf929da61769",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"ics",
+						"babcaaf9-c537-458a-aefd-bf929da61769"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete-ic-by-id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status da saida é 204\", () => {",
+							"  pm.response.to.have.status(204);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/ics/babcaaf9-c537-458a-aefd-bf929da61769/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"ics",
+						"babcaaf9-c537-458a-aefd-bf929da61769",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-ics-by-id-after-delete",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status da saida é 404\", () => {",
+							"  pm.response.to.have.status(404);",
+							"});",
+							"",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/ics/babcaaf9-c537-458a-aefd-bf929da61769",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"ics",
+						"babcaaf9-c537-458a-aefd-bf929da61769"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post-campo-faltando-invalido",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"  pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"88427b50-4908-4734-ad52-9bd8f2ca9619\",\n    \"advisor\": \"7c8ffe7e00324f5bb9970cfff1c5e13b\",\n    \"endDate\": \"2021-06-14\",\n    \"has_scholarship\": false,\n    \"scholarship_amount\": \"50.00\",\n    \"subject\": \"Engenharia de Software\",\n    \"requirements\": \"MC558\",\n    \"workload\": \"12.00\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/ics/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"ics",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post-campo-vazio-invalido",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"  pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"88427b50-4908-4734-ad52-9bd8f2ca9619\",\n    \"name\": \"nome\",\n    \"advisor\": \"7c8ffe7e00324f5bb9970cfff1c5e13b\",\n    \"endDate\": \"\",\n    \"has_scholarship\": false,\n    \"scholarship_amount\": \"50.00\",\n    \"subject\": \"Engenharia de Software\",\n    \"requirements\": \"MC558\",\n    \"workload\": \"12.00\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/ics/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"ics",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post-campo-limite-max-valido",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"  pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"88427b50-4908-4734-ad52-9bd8f2ca9619\",\n    \"name\": \"SVVeXupOFpZkcbUWExhIdLHkPgEsewADmwMHokMAMLKXHHoqyq\",\n    \"advisor\": \"7c8ffe7e00324f5bb9970cfff1c5e13b\",\n    \"endDate\": \"vKzoZGzqaidjUitl\",\n    \"has_scholarship\": false,\n    \"scholarship_amount\": \"12345\",\n    \"subject\": \"SBNrmWNcHNsoBfjpqalOcUhWYSWSPPypHZvitKUcXSVCbTqfyHucGQfNbSfOhSgmTYpMOTBCRnEZyUNcJvvzeRwNfpxtIyjzqPTG\",\n    \"requirements\": \"BJLvSOOdfSKjTeOSzkfAyesUnQejSruqixVCFivBeYCmNmrLcsPYzYuVXAvfFxvBSqGLceAgBqHhmrQhOKObTDtVuZDrjKRtpxGiSBqADVQPcxcFLjxUekEvdDIkppfmgJYhscMxyAKXmNmryBXvnvWcDSBqhWANubHlLsCOVwiKRhDBXJkbJjFSSJtuQPyomoMpopeDwxmMrJFbRIPTtgxOoemxPqjWediiUwNGdLVcLBvbJkrdmhJJscAsADRfFtBRmupQOzgqbDvVuggDaYeiYXXIcQXrVHXvELkRZLknaIhnapLayfMdnqbgsGSbxvEGmUsffCxJJumZNALojUZpkiUWNmXGmUrrQnlMiNLaLjPLhpOSqTdhGXnDBpZOHwXYkShFeyRKDUvBSqvthmKKcOJLBgPDTurMQNUTsAjrlOBdIwCQftPWMOWXMLCNDsjxpPmQfQKPtcgATPhMDVJDoJBKzIfSsiHlnMbKcXlizyVdWqUZmJRNZjjvmUEnMtHllyWpUhmhaOQVrzwYLASSuMhFDyeonipHDNGgRmvnvoMnmagxJQyhMZnoeExoFeVfcfsIKnkbqUMqCdXxKYZCrQorRBemPOQHxDjmoLnQsXrnOyrKevEiXQeNhtWUGVrufzoYGxSVJOaCwJiibkgdihxeHigvmgpZBFRhTXSmivjUwjqRXAopsIgJDiWMvKqACHhWyZGglRNppWTAJicLMJJvkSjyacJHtyeABvyyPejtOZHShANiENxiPanOKLnsUNYBeCQxZeFKekOIFungFKfuYueTnNcuQmYKmNrKmSOPglgDweenKNAovjGOgTwcFaFSfLWZZUBRVRzPIqZkPAHMGYTWzqraoHflVTOMqpDljHRWneXoQgtVITtPZPNNhevhzlMpvOdUjblLKVUtWcivKSfpglqMZfuEXonQfhCYenajORRAQDuqwbggCTqeEUcYBphEgwEQrtVclBrYIBtQfHmNtrglqymA\",\n    \"workload\": \"RreRb\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/ics/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"ics",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete-ic-by-id Copy 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status da saida é 204\", () => {",
+							"  pm.response.to.have.status(204);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/ics/88427b50-4908-4734-ad52-9bd8f2ca9619/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"ics",
+						"88427b50-4908-4734-ad52-9bd8f2ca9619",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post-campo-limite-min-valido",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"  pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"1\",\n    \"name\": \"1\",\n    \"advisor\": \"1\",\n    \"endDate\": \"1\",\n    \"has_scholarship\": false,\n    \"scholarship_amount\": \"1\",\n    \"subject\": \"1\",\n    \"requirements\": \"1\",\n    \"workload\": \"1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/ics/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"ics",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete-ic-by-id Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status da saida é 204\", () => {",
+							"  pm.response.to.have.status(204);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/ics/1/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"ics",
+						"1",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "id-for-get",
+			"value": "487e8c0dc2144f42a05261159a1b3854"
 		}
 	]
 }
