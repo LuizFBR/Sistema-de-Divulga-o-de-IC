@@ -7,6 +7,9 @@ Um sistema para facilitar o acesso de alunos a ICs, que serão categorizadas em 
 * Luiz Fernando Bueno Rosa RA 221197
 * Lucas Silva Lopes do Carmo RA 202110
 
+## Video explicando o projeto
+https://drive.google.com/file/d/1HdrqWrb_zfD0-8-6BnmSGCJ63JchvdAi/view?usp=sharing
+
 ## UML
 
 ![](/images/UML-Divulga-IC.png)
@@ -88,7 +91,3 @@ agora para execultar este arquivo:
 ```
 ./requirements.sh
 ```
-
-
-## Video explicando o projeto
-https://drive.google.com/file/d/1HdrqWrb_zfD0-8-6BnmSGCJ63JchvdAi/view?usp=sharing
