@@ -89,3 +89,6 @@ agora para execultar este arquivo:
 ./requirements.sh
 ```
 
+
+## Video explicando o projeto
+https://drive.google.com/file/d/1HdrqWrb_zfD0-8-6BnmSGCJ63JchvdAi/view?usp=sharing
