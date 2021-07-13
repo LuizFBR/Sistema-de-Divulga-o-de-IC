@@ -1,7 +1,7 @@
 {
-	"id": "8a23676e-230f-415a-825a-17987708770e",
+	"id": "1cf26d70-44d1-4970-b561-74ce73f7e54b",
 	"name": "DivulgaIC",
-	"timestamp": "2021-07-10T00:20:39.055Z",
+	"timestamp": "2021-07-12T21:30:48.570Z",
 	"collection_id": "671f7be8-bdd7-4c46-8f77-5b9e5b7896f0",
 	"folder_id": 0,
 	"environment_id": "d089e95c-f12d-4fae-bfe6-674c257a9197",
@@ -12,7 +12,7 @@
 			"id": "e0fe0ec9-15f1-4602-beb2-e678672431f2",
 			"name": "get-all-ic",
 			"url": "http://localhost:8000/api/ics/",
-			"time": 73,
+			"time": 428,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -32,7 +32,7 @@
 				}
 			},
 			"times": [
-				73
+				428
 			],
 			"allTests": [
 				{
@@ -45,7 +45,7 @@
 			"id": "ba2d8aa5-0e0f-4066-87da-a2311b43c1cc",
 			"name": "get-advisors-list",
 			"url": "http://localhost:8000/api/advisors/",
-			"time": 14,
+			"time": 7,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -65,7 +65,7 @@
 				}
 			},
 			"times": [
-				14
+				7
 			],
 			"allTests": [
 				{
@@ -78,7 +78,7 @@
 			"id": "3ce70f08-d378-4108-8c21-72f341b509b4",
 			"name": "get-ics-by-id",
 			"url": "http://localhost:8000/api/ics/487e8c0dc2144f42a05261159a1b3854",
-			"time": 42,
+			"time": 7,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -103,7 +103,7 @@
 				}
 			},
 			"times": [
-				42
+				7
 			],
 			"allTests": [
 				{
@@ -117,7 +117,7 @@
 			"id": "d07f14c3-872f-4c1a-af63-3fd80a7ce456",
 			"name": "post-new-ic",
 			"url": "http://localhost:8000/api/ics/",
-			"time": 230,
+			"time": 1369,
 			"responseCode": {
 				"code": 201,
 				"name": "Created"
@@ -132,7 +132,7 @@
 				}
 			},
 			"times": [
-				230
+				1369
 			],
 			"allTests": [
 				{
@@ -144,7 +144,7 @@
 			"id": "3f852e57-ec55-41fe-b75e-ab728fb51644",
 			"name": "post-new-ic-idIgual-invalido",
 			"url": "http://localhost:8000/api/ics/",
-			"time": 21,
+			"time": 11,
 			"responseCode": {
 				"code": 400,
 				"name": "Bad Request"
@@ -159,7 +159,7 @@
 				}
 			},
 			"times": [
-				21
+				11
 			],
 			"allTests": [
 				{
@@ -171,7 +171,7 @@
 			"id": "94f5ef91-84f1-47c9-b408-752f062fff3b",
 			"name": "get-validar-post",
 			"url": "http://localhost:8000/api/ics/babcaaf9-c537-458a-aefd-bf929da61769",
-			"time": 12,
+			"time": 6,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -186,7 +186,7 @@
 				}
 			},
 			"times": [
-				12
+				6
 			],
 			"allTests": [
 				{
@@ -198,7 +198,7 @@
 			"id": "44b67b91-fc76-4111-bb96-605e9fdeed74",
 			"name": "Delete-ic-by-id",
 			"url": "http://localhost:8000/api/ics/babcaaf9-c537-458a-aefd-bf929da61769/",
-			"time": 214,
+			"time": 1263,
 			"responseCode": {
 				"code": 204,
 				"name": "No Content"
@@ -213,7 +213,7 @@
 				}
 			},
 			"times": [
-				214
+				1263
 			],
 			"allTests": [
 				{
@@ -225,7 +225,7 @@
 			"id": "1cc3142c-cde3-4bee-84e3-9e9016e344ea",
 			"name": "get-ics-by-id-after-delete",
 			"url": "http://localhost:8000/api/ics/babcaaf9-c537-458a-aefd-bf929da61769",
-			"time": 56,
+			"time": 6,
 			"responseCode": {
 				"code": 404,
 				"name": "Not Found"
@@ -240,7 +240,7 @@
 				}
 			},
 			"times": [
-				56
+				6
 			],
 			"allTests": [
 				{
@@ -252,7 +252,7 @@
 			"id": "39f8b09d-1319-43d1-bb59-b69513e8cb27",
 			"name": "post-campo-faltando-invalido",
 			"url": "http://localhost:8000/api/ics/",
-			"time": 22,
+			"time": 54,
 			"responseCode": {
 				"code": 400,
 				"name": "Bad Request"
@@ -267,7 +267,7 @@
 				}
 			},
 			"times": [
-				22
+				54
 			],
 			"allTests": [
 				{
@@ -279,7 +279,7 @@
 			"id": "643c260d-1a11-4646-93b1-07bf63b565d6",
 			"name": "post-campo-vazio-invalido",
 			"url": "http://localhost:8000/api/ics/",
-			"time": 18,
+			"time": 9,
 			"responseCode": {
 				"code": 400,
 				"name": "Bad Request"
@@ -294,7 +294,7 @@
 				}
 			},
 			"times": [
-				18
+				9
 			],
 			"allTests": [
 				{
@@ -306,7 +306,7 @@
 			"id": "c7cef7d5-4883-4e9d-849d-7fabf8a68154",
 			"name": "post-campo-limite-max-valido",
 			"url": "http://localhost:8000/api/ics/",
-			"time": 79,
+			"time": 1234,
 			"responseCode": {
 				"code": 201,
 				"name": "Created"
@@ -321,7 +321,7 @@
 				}
 			},
 			"times": [
-				79
+				1234
 			],
 			"allTests": [
 				{
@@ -333,7 +333,7 @@
 			"id": "bddf5e10-aac3-4dac-9e5b-69322ddf5f15",
 			"name": "Delete-ic-by-id Copy 2",
 			"url": "http://localhost:8000/api/ics/88427b50-4908-4734-ad52-9bd8f2ca9619/",
-			"time": 56,
+			"time": 1836,
 			"responseCode": {
 				"code": 204,
 				"name": "No Content"
@@ -348,7 +348,7 @@
 				}
 			},
 			"times": [
-				56
+				1836
 			],
 			"allTests": [
 				{
@@ -360,7 +360,7 @@
 			"id": "e936b04f-78d6-4306-a484-978d4ddcbc55",
 			"name": "post-campo-limite-min-valido",
 			"url": "http://localhost:8000/api/ics/",
-			"time": 54,
+			"time": 1363,
 			"responseCode": {
 				"code": 201,
 				"name": "Created"
@@ -375,7 +375,7 @@
 				}
 			},
 			"times": [
-				54
+				1363
 			],
 			"allTests": [
 				{
@@ -387,7 +387,7 @@
 			"id": "31eb2b93-f113-4acc-8ed3-6342c8ef1893",
 			"name": "Delete-ic-by-id Copy",
 			"url": "http://localhost:8000/api/ics/1/",
-			"time": 67,
+			"time": 1896,
 			"responseCode": {
 				"code": 204,
 				"name": "No Content"
@@ -402,7 +402,7 @@
 				}
 			},
 			"times": [
-				67
+				1896
 			],
 			"allTests": [
 				{
@@ -412,7 +412,7 @@
 		}
 	],
 	"count": 1,
-	"totalTime": 958,
+	"totalTime": 9489,
 	"collection": {
 		"requests": [
 			{
